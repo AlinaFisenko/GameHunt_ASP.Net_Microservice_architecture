@@ -1,0 +1,48 @@
+﻿@model SubscriptionDto
+<form asp-action="SubscriptionCreate">
+    <br />
+    <div class="container border p-3">
+        <h1 class="text-white text-center">Create Subscription</h1>
+
+        <hr />
+        <div class="row">
+            <div class="col-2">
+                <label  class="control-label pt-2" style="font-size:20px;">Subscription Title</label>
+            </div>
+            <div class="col-10 pb-3">
+                <input  asp-for = "subscriptionTitle" class="form-control" />
+            </div>
+            <div class="col-2">
+                <label  class="control-label pt-2" style="font-size:20px;">Price</label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="subscriptionPrice" class="form-control" type="decimal" />
+                <span asp-validation-for="subscriptionPrice" class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label  class="control-label pt-2" style="font-size:20px;">Days</label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="subscriptionDays" class="form-control" />
+                <span asp-validation-for="subscriptionDays" class="text-danger"></span>
+            </div>
+            
+            <div class="col-5 offset-2">
+
+                <a asp-action="SubscriptionIndex" class="btn-primary btn form-control ">Back to List</a>
+            </div>
+            <div class="col-5">
+                <input type="submit" value="Create" class="btn btn-success form-control" />
+
+            </div>
+
+        </div>
+
+        <div>
+        </div>
+    </div>
+</form>
+
+@* @section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+            } *@

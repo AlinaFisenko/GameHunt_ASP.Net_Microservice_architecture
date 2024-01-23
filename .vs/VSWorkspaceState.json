@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\AuthAPI",
+    "\\OrderAPI",
+    "\\OrderAPI\\Controllers",
+    "\\RecomendationAPI",
+    "\\RecomendationsAPI",
+    "\\RecomendationsAPI\\Controllers",
+    "\\SubscriptionAPI",
+    "\\SubscriptionAPI\\Controllers"
+  ],
+  "SelectedNode": "\\SubscriptionAPI\\Controllers\\SubscriptionAPIController.cs",
+  "PreviewInSolutionExplorer": false
+}

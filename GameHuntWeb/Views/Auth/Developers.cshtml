@@ -1,0 +1,39 @@
+﻿@model IEnumerable<dynamic>
+
+
+    <div class="container row">
+        @foreach (var item in Model)
+        {
+            <form class="col-4" method="post">
+                <div class="p-0 my-3 border rounded">
+                    <div class="card text-white bg-primary mb-3" style="max-width: 20rem">
+                        <h3 class="card-title text-white-50 text-center py-2">@item.Name</h3>
+                        <span class="badge bg-secondary text-white p-2">@item.PhoneNumber</span>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between py-2">
+                                <span style="font-size:20px;">@item.Email</span>
+                            </div>
+                        <span class="badge bg-secondary text-white p-2">Rating: <strong>@item.rate</strong></span>
+                        <span class="badge bg-info text-white p-2">Done projects: <strong>@item.count_done</strong></span>
+                            @if (User.IsInRole("CLIENT"))
+                            {
+                                <div class=" row-md-10 ">
+                                    <input type="hidden" name="id_user" value="@item.ID" />
+                                    <select class="form-select" asp-items="@ViewBag.OrderList" name="selectedOrder">
+                                        <option disabled selected>Select Order</option>
+                                    </select>
+                                 <p></p>
+                                    <button type="submit" asp-action="SendRequest" asp-route-id="@item.ID" class="btn btn-success form-control">Send Request</button>
+                                  <p></p>
+                                    <button type="submit" asp-action="AddComment" asp-route-id="@item.ID" class="btn btn-info form-control">Add Comment</button>
+                                    @* <a class="btn btn-success form-control">Send Request</a> *@
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </form>
+        }
+    </div>
+
+

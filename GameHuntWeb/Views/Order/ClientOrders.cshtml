@@ -1,0 +1,71 @@
+﻿@model IEnumerable<OrderDto>
+
+<div class="card shadow border-0 mt-4">
+	<div class="card-header bg-secondary bg-gradient ml-0 py-3">
+		<div class="row">
+			<div class="col-12 text-center">
+				<h1 class="text-white">Orders List</h1>
+			</div>
+		</div>
+	</div>
+	<div class="card-body p-4" >
+		<div class="row pb-3 ">
+			<div class="col-6">
+			</div>
+			<div class="col-6 text-end">
+				<a asp-action="OrderCreate" class="btn btn-outline-primary"><i class="bi bi-plus-square"></i> Create New Order</a>
+			</div>
+		</div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>
+						Title
+					</th>
+					<th>
+						Genre Name
+					</th>
+					<th>
+						Salary
+					</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var item in Model)
+				{
+					<tr>
+						<td>
+							@item.title
+						</td>
+						<td>
+							@item.genre
+						</td>
+						<td>
+							@((item.salary).ToString("c"))
+						</td>
+						<td>
+							<a class="btn btn-success" asp-action="OrderEdit" asp-route-id="@item.id_order">
+								<i class="bi bi-pencil-square"></i>
+							</a>
+						</td>
+						<td>
+								<form method="post" asp-action="OrderDelete" asp-route-id="@item.id_order">
+									<button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+								</form>
+						</td>
+
+						<td>
+							<div class="col">
+								<a asp-action="ViewOrder" asp-route-id="@item.id_order" class="btn btn-success form-control">Details</a>
+							</div>
+						</td>
+
+					</tr>
+				}
+			</tbody>
+		</table>
+
+	</div>
+
+</div>

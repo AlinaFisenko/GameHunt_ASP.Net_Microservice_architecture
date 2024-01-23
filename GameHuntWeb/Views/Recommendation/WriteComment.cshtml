@@ -1,0 +1,22 @@
+﻿@model CommentDto
+
+<form method="post">
+    <div class="container border p-4">
+        <div class="row text-center">
+            <h1>Add Comment</h1>
+        </div>
+        <div class="row">
+            <div class=" col-md-4 offset-md-4 pb-2">
+                <input hidden asp-for="id_client" />
+                <input hidden asp-for="id_dev" />
+                <input asp-for="description" class="form-control" placeholder="Write your comment" />
+            </div>
+            <div class=" col-md-4 offset-md-4 pb-2">
+                <input asp-for="rate" class="form-control" placeholder="Rate from 1 to 5" />
+            </div>
+            <div class=" col-md-4 offset-md-4 pb-2">
+                <button type="submit" asp-action="CreateComment" class="form-control btn btn-success" value="Submit">Add</button>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<SubscriptionDto>
+
+<form method="post">
+    <div class="container row">
+        @foreach (var item in Model)
+        {
+            <div class="col-4">
+                <div class="p-0 my-3 border rounded">
+                    <div class="card text-white bg-primary mb-3" style="max-width: 20rem">
+                        <h3 class="card-title text-white-50 text-center py-2">@item.subscriptionTitle</h3>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between py-2">
+                                <span  style="font-size:20px;">@string.Format("{0:c}", item.subscriptionPrice)</span>
+                                <span class="badge bg-secondary text-white p-2">@item.subscriptionDays days</span>
+                            </div>
+                            @if (User.IsInRole("DEVELOPER"))
+                            {
+                            <div class="row">
+                                <div class="col">
+                                    <input hidden asp-for="@item.subscriptionId"/>
+                                        <button type="submit" asp-action="PaySubscription" asp-route-id="@item.subscriptionId" class="btn btn-success form-control">Pay</button>
+                                        @* <a class="btn btn-success form-control">Pay</a> asp-route-id="@item.subscriptionId" *@
+                                </div>
+                            </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>@* 
+    <div class="alert alert-dismissible alert-primary">
+        <strong>These are the subscriptions for developers. How it works: developer must pay subscription, and then his profile will be displayed for clients,
+            also developer's can participate - take orders, developers rating depends on count of completed orders</strong>
+    </div> *@
+</form>
+
+

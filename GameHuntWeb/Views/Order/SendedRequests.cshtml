@@ -1,0 +1,22 @@
+﻿@model IEnumerable<dynamic>
+
+<div class="container row">
+    @if (Model != null && Model.Any())
+    {
+        @foreach (var item in Model)
+        {
+            <form class="col-4">
+                <div class="p-0 my-3 border rounded">
+                    <div class="card text-white bg-primary mb-3" style="max-width: 20rem">
+                        <h3 class="card-title text-white-50 text-center py-2">@item.title</h3>
+                        <h4 class="card-title text-white-50 text-center py-2">Sended to: @item.Name</h4>
+                        <span class="badge bg-secondary text-white p-2">@item.state</span>
+                    </div>
+                </div>
+            </form>
+        }
+
+    }
+</div>
+
+

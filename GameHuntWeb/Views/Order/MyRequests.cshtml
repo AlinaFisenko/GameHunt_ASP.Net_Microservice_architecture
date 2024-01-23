@@ -1,0 +1,31 @@
+﻿@model IEnumerable<dynamic>
+
+
+<div class="container row">
+     @if (Model != null && Model.Any())
+    {
+        @foreach (var item in Model)
+        {
+            <form class="col-4" method="post">
+                <div class="p-0 my-3 border rounded">
+                    <div class="card text-white bg-primary mb-3" style="max-width: 20rem">
+                        <h3 class="card-title text-white-50 text-center py-2">@item.title</h3>
+                        <span class="badge bg-secondary text-white p-2">@item.state</span>
+                        <div class="card-body">
+                            <div class=" row-md-10 ">
+                                <input type="hidden" name="id_request" value="@item.id_request" />
+                                <select class="form-select" asp-items="@ViewBag.StateList" name="selectedState">
+                                    <option disabled selected>Select State</option>
+                                </select>
+                                <button type="submit" asp-action="UpdateRequest" asp-route-id="@item.id_request" class="btn btn-success form-control">Update State</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        }
+
+    }
+</div>
+
+

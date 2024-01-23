@@ -1,0 +1,39 @@
+﻿@model IEnumerable<CommentDto>
+
+<form method="post">
+    <div class="pt-4">
+        <div class="row">
+            <div class="col-12 col-md-6 mb-3">
+                <h1 class="text-white">@ViewBag.User.Name</h1>
+                <span class="text-warning">@ViewBag.User.Email</span>
+            </div>
+
+            @if (User.IsInRole("CLIENT"))
+            {
+                <div class="col-4">
+                    <button type="submit" asp-action="WriteComment" asp-route-id ="@ViewBag.User.ID" class="btn btn-primary form-control">Add Comment</button>
+                </div>
+
+                <div class="col-4">
+                @foreach (var item in Model)
+                {
+                    <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+                        <div class="card-header">Comment</div>
+                        <div class="card-body">
+                            @* <h4 class="card-title">Primary card title</h4> *@
+                            <p class="card-text">@item.description</p>
+                            <p>Rate: @item.rate</p>
+                        </div>
+                    </div>
+
+                }
+
+                </div>
+
+            }
+
+            <div class="col-12 mt-3">
+            </div>
+        </div>
+    </div>
+</form>
